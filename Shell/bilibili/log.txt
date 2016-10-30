@@ -1,0 +1,29 @@
+Feb 12 02:51:01 CST 2017   : 1
+roomid: 1094216
+{"code":0,"msg":"","data":[]}{"code":0,"msg":"","data":[]}
+roomid: 369029
+{"code":0,"msg":"msg in 1s","data":[]}{"code":0,"msg":"","data":[]}
+roomid: 1598612
+{"code":0,"msg":"msg in 1s","data":[]}{"code":0,"msg":"","data":[]}
+Sun Feb 12 04:32:28 CST 2017   : 2
+roomid: 1094216
+{"code":0,"msg":"","data":[]}{"code":0,"msg":"","data":[]}
+roomid: 369029
+{"code":0,"msg":"","data":[]}{"code":0,"msg":"","data":[]}
+roomid: 1598612
+{"code":0,"msg":"msg in 1s","data":[]}{"code":0,"msg":"","data":[]}
+Sun Feb 12 06:26:58 CST 2017   : 3
+roomid: 1094216
+{"code":0,"msg":"","data":[]}{"code":0,"msg":"","data":[]}
+roomid: 369029
+{"code":0,"msg":"msg in 1s","data":[]}{"code":0,"msg":"","data":[]}
+roomid: 1598612
+{"code":0,"msg":"msg in 1s","data":[]}{"code":0,"msg":"","data":[]}
+Sun Feb 12 07:28:11 CST 2017   : 4
+roomid: 1094216
+{"code":0,"msg":"","data":[]}{"code":0,"msg":"","data":[]}
+roomid: 369029
+{"code":0,"msg":"msg in 1s","data":[]}{"code":0,"msg":"","data":[]}
+roomid: 1598612
+{"code":0,"msg":"msg in 1s","data":[]}{"code":0,"msg":"","data":[]}
+Sun Feb 12 08:05:53 CST 2017   : 5
