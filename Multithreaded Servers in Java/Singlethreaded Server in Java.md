@@ -5,7 +5,6 @@
 本节将展示一个单线程服务器Java实现。单线程服务器Java实现对服务器来说并不是最优的设计，但是其代码能很好的说明一个服务器的生命周期，后续关于多线程服务器的代码也是会以此代码作为模板扩展的。
 
 这是一个简单的单线程服务器的实现代码：
-
 <div class="codehilite"><pre><span class="kn">package</span> <span class="nn">servers</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.net.ServerSocket</span><span class="o">;</span>
@@ -15,16 +14,13 @@
 <span class="kn">import</span> <span class="nn">java.io.OutputStream</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleThreadedServer</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
-
-    <span class="kd">protected</span> <span class="kt">int</span>          <span class="n">serverPort</span>   <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
+<span class="kd">protected</span> <span class="kt">int</span>          <span class="n">serverPort</span>   <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
     <span class="kd">protected</span> <span class="n">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
     <span class="kd">protected</span> <span class="kt">boolean</span>      <span class="n">isStopped</span>    <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
     <span class="kd">protected</span> <span class="n">Thread</span>       <span class="n">runningThread</span><span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-
     <span class="kd">public</span> <span class="nf">SingleThreadedServer</span><span class="o">(</span><span class="kt">int</span> <span class="n">port</span><span class="o">){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">serverPort</span> <span class="o">=</span> <span class="n">port</span><span class="o">;</span>
     <span class="o">}</span>
-
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
         <span class="kd">synchronized</span><span class="o">(</span><span class="k">this</span><span class="o">){</span>
             <span class="k">this</span><span class="o">.</span><span class="na">runningThread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
@@ -52,13 +48,11 @@
     </i></STRONG>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Server Stopped.&quot;</span><span class="o">);</span>
     <span class="o">}</span>
-
     <span class="kd">private</span> <span class="kt">void</span> <span class="nf">processClientRequest</span><span class="o">(</span><span class="n">Socket</span> <span class="n">clientSocket</span><span class="o">)</span>
     <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
         <span class="n">InputStream</span>  <span class="n">input</span>  <span class="o">=</span> <span class="n">clientSocket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
         <span class="n">OutputStream</span> <span class="n">output</span> <span class="o">=</span> <span class="n">clientSocket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
         <span class="kt">long</span> <span class="n">time</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-
         <span class="n">output</span><span class="o">.</span><span class="na">write</span><span class="o">((</span><span class="s">&quot;HTTP/1.1 200 OK\n\n&lt;html&gt;&lt;body&gt;&quot;</span> <span class="o">+</span>
                 <span class="s">&quot;Singlethreaded Server: &quot;</span> <span class="o">+</span>
                 <span class="n">time</span> <span class="o">+</span>
@@ -67,11 +61,9 @@
         <span class="n">input</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Request processed: &quot;</span> <span class="o">+</span> <span class="n">time</span><span class="o">);</span>
     <span class="o">}</span>
-
     <span class="kd">private</span> <span class="kd">synchronized</span> <span class="kt">boolean</span> <span class="nf">isStopped</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">isStopped</span><span class="o">;</span>
     <span class="o">}</span>
-
     <span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">(){</span>
         <span class="k">this</span><span class="o">.</span><span class="na">isStopped</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
         <span class="k">try</span> <span class="o">{</span>
@@ -80,7 +72,6 @@
             <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&quot;Error closing server&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
         <span class="o">}</span>
     <span class="o">}</span>
-
     <span class="kd">private</span> <span class="kt">void</span> <span class="nf">openServerSocket</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">try</span> <span class="o">{</span>
             <span class="k">this</span><span class="o">.</span><span class="na">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerSocket</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">serverPort</span><span class="o">);</span>
